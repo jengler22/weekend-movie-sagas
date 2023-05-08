@@ -6,11 +6,12 @@ import axios from "axios";
 
 function MovieDetails () {
 
-    let {id} = useParams();
+    let { id } = useParams();
     let history = useHistory();
     let dispatch = useDispatch();
+
     const movies = useSelector(store => store.movies);
-    const movieGenres = useSelector(store => store.movieGenres);
+    const movieGenres = useSelector(store => store.movieGenres)
 
     const backButton = () => {
         history.push('/')
@@ -19,24 +20,24 @@ function MovieDetails () {
     // GET genres of movie by id
     const getMovieGenres = () => {
         console.log('In getMovieGenres, movieGenres');
-        axios.get(`/api/movie/${movies[id - 1].id}`)
+        axios.get(`/api/movie/${movies[id].id}`)
         .then((response) => {
             dispatch({ type: 'SET_MOVIE_GENRES', payload: response.data });
         }).catch(error => {
-            alert('Something went wrong');
+            alert('Something went wrong1');
         })
     }
 
     useEffect(() => {
         getMovieGenres();
-    }, []);
+    }, [])
 
     return(
         <>
-        <h2>{movies[id-1].title}</h2>
-        <img src={movies[id-1].poster} alt={movies[id-1].title} />
+        <h2>{movies[id].title}</h2>
+        <img src={movies[id-1].poster} alt={movies[id].title} />
         <br />
-        <p className="detailsDescription"> {movies[id-1].description}</p>
+        <p className="detailsDescription"> {movies[id].description}</p>
         <h4>Genres</h4>
         <ul className="genreList">
             {

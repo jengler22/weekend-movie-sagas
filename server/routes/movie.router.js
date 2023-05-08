@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 });
 // GET genres of specific movie by id 
-router.get('/:1d', (req, res) => {
+router.get('/:id', (req, res) => {
   let movieId = req.params.id
   const queryText = `SELECT genres.name FROM genres
     JOIN movies_genres ON genres.id = movies_genres.genres_id
@@ -25,8 +25,9 @@ router.get('/:1d', (req, res) => {
     WHERE movies.id = $1`;
 pool.query(queryText, [movieId]).then(result => {
   res.send(result.rows);
-}).catch(error => {
-  console.log('ERROR in GET genres', error);
+}).catch(err => {
+  console.log('ERROR in GET genres', err);
+  res.sendStatus(500)
    })
 });
 
