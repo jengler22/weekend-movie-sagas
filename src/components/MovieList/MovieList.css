@@ -1,7 +1,4 @@
-.movies {
-    display : flex;
-    flex-wrap: wrap;
-}
+
 
 .movieImages {
     cursor: pointer
