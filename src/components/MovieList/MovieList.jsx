@@ -12,6 +12,10 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    useEffect(() => {
+        dispatch({ type: 'FETCH_GENRES' });
+    }, []);
+
     // view movie details on click 
      const moreDetails = (id) => {
         history.push(`/details/${id}`)

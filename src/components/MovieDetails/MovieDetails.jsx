@@ -29,7 +29,7 @@ function MovieDetails () {
 
     useEffect(() => {
         getMovieGenres();
-    }, [])
+    }, []);
 
     return(
         <>
@@ -44,7 +44,7 @@ function MovieDetails () {
                     return <li key= {genre.id}>
                         {genre.name}
                     </li>
-                    
+
                 })
             }
         </ul>
