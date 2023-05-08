@@ -16,6 +16,19 @@ router.get('/', (req, res) => {
     })
 
 });
+// GET genres of specific movie by id 
+router.get('/:1d', (req, res) => {
+  let movieId = req.params.id
+  const queryText = `SELECT genres.name FROM genres
+    JOIN movies_genres ON genres.id = movies_genres.genres_id
+    JOIN movies ON movies_genres.movie_id = movies.id
+    WHERE movies.id = $1`;
+pool.query(queryText, [movieId]).then(result => {
+  res.send(result.rows);
+}).catch(error => {
+  console.log('ERROR in GET genres', error);
+   })
+});
 
 
 
