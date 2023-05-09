@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
@@ -50,7 +48,7 @@ function MovieList() {
             <p><i>- Click for more details! -</i></p>
             <Container maxWidth='xl'>
                 <Grid container spacing={5} justifyContent='center'>
-                        {movies.map(movie => {
+                        {movies.map((movie, i) => {
                             return (
                                 // spacing between cards
                                 <Grid item sx={{ mx: '20px', my: '20px' }}>
@@ -66,7 +64,7 @@ function MovieList() {
                                             {movie.title}                         
                                         </Typography>
                                         <img src={movie.poster} alt={movie.title}
-                                            onClick={() => moreDetails(movie.id)}
+                                            onClick={() => moreDetails(i)}
                                             className="movieImages"
                                         />
                                     </Card>

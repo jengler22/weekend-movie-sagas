@@ -35,7 +35,7 @@ function MovieDetails () {
     return(
         <>
         <h2>{movies[id].title}</h2>
-        <img src={movies[id-1].poster} alt={movies[id].title} />
+        <img src={movies[id].poster} alt={movies[id].title} />
         <br />
         <p className="detailsDescription"> {movies[id].description}</p>
         <h4>Genres</h4>
